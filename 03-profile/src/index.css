@@ -1,0 +1,17 @@
+/* styles.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Personalización adicional */
+body {
+  background-color: #f3f4f6;
+}
+
+a {
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #4f46e5;
+}
