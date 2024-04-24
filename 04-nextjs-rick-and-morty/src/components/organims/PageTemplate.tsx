@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react'
 import { Header } from '@/components/molecules/Header'
+import Footer from '../molecules/Footer'
 
 interface PageTemplateProps {
     titleLink: string
@@ -18,6 +19,7 @@ export function PageTemplate({
             url={urlLink}
         />
         {children}
+        <Footer />
     </main>
   )
 }
