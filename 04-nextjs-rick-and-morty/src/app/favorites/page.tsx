@@ -8,31 +8,22 @@ import { useFavorites } from "@/hooks/useFavorite";
 import { Character } from "@/types/Character";
 
 export default function Favorites() {
+  const { favorites, toggleFavorite } = useFavorites<Character>("characters");
 
-    const {favorites, toggleFavorite} = useFavorites<Character>("characters");
-
-    
-    return (
-        <>
-      <PageTemplate
-        titleLink="Todos los personajes"
-        urlLink="/"
-      >
+  return (
+    <>
+      <PageTemplate titleLink="Todos los personajes" urlLink="/">
         <CharacterList>
-
-          {favorites.map(favorite => (
+          {favorites.map((favorite) => (
             <CharacterCard
-                key={favorite.id}
-                character={favorite}
-                isFavorite={true}
-                toggleFavorite={toggleFavorite}
+              key={favorite.id}
+              character={favorite}
+              isFavorite={true}
+              toggleFavorite={toggleFavorite}
             />
           ))}
-
         </CharacterList>
-
-
       </PageTemplate>
-    </> 
-    );
+    </>
+  );
 }

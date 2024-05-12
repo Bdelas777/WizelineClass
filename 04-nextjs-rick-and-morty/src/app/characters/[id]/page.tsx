@@ -6,33 +6,30 @@ import { getCharacterId } from "@/services/getCharacterId";
 import { Character } from "@/types/Character";
 import { useEffect, useState } from "react";
 
-export default function CharacterDetail({ params }: { params: { id: string } }) {
+export default function CharacterDetail({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const [character, setCharacter] = useState<Character>();
 
-    const [character, setCharacter] = useState<Character>();
-  
-    useEffect(() => {
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      const res = await getCharacterId(Number(params.id));
+      setCharacter(res);
+    };
+    fetchCharacters();
+  }, []);
 
-      const fetchCharacters = async () => {
-          const res = await getCharacterId(Number(params.id));
-          setCharacter(res);
-      }
-      fetchCharacters();
-  
-    }, [])
-  
-    return (
-      <>
-        <PageTemplate
-          titleLink="Todos los personajes"
-          urlLink="/"
-        >
+  return (
+    <>
+      <PageTemplate titleLink="Todos los personajes" urlLink="/">
         {character && (
-            <>
-                <DetailCard character={character}/>
-            </>
+          <>
+            <DetailCard character={character} />
+          </>
         )}
-        </PageTemplate>
-      </>   
-    );
-  }
-  
+      </PageTemplate>
+    </>
+  );
+}
