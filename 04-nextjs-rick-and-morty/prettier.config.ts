@@ -4,6 +4,7 @@ const config = {
   semi: false, // decide if you want to add semicolon at the end
   plugins: ['prettier-plugin-tailwindcss'], // help us to change order automatically for Tailwind
   jsxSingleQuote: true, // decide if you want to add single quotes for JSX
+  
 };
 
-export default config
+export default config;
