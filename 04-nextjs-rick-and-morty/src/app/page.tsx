@@ -10,42 +10,32 @@ import { Character } from "@/types/Character";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-
   const [characters, setCharacters] = useState<Character[]>([]);
-  const {favorites, toggleFavorite} = useFavorites<Character>("characters");
+  const { favorites, toggleFavorite } = useFavorites<Character>("characters");
 
   useEffect(() => {
-
     const fetchCharacters = async () => {
-        const res = await getAllCharacters();
-        setCharacters(res);
-    }
+      const res = await getAllCharacters();
+      setCharacters(res);
+    };
 
     fetchCharacters();
-
-  }, [])
+  }, []);
 
   return (
     <>
-      <PageTemplate
-        titleLink="Favoritos"
-        urlLink="/favorites"
-      >
+      <PageTemplate titleLink="Favoritos" urlLink="/favorites">
         <CharacterList>
-
-          {characters.map(character => (
+          {characters.map((character) => (
             <CharacterCard
-                key={character.id}
-                character={character}
-                isFavorite={favorites.some(fav => fav.id === character.id)}
-                toggleFavorite={toggleFavorite}
+              key={character.id}
+              character={character}
+              isFavorite={favorites.some((fav) => fav.id === character.id)}
+              toggleFavorite={toggleFavorite}
             />
           ))}
-
         </CharacterList>
-
-
       </PageTemplate>
-    </>   
+    </>
   );
 }
