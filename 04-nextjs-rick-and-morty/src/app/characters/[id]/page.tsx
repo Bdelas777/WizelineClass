@@ -19,7 +19,7 @@ export default function CharacterDetail({
       setCharacter(res);
     };
     fetchCharacters();
-  }, []);
+  }, [params.id]); // Agregamos `params.id` al arreglo de dependencias
 
   return (
     <>

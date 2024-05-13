@@ -1,13 +1,13 @@
 import React from "react";
-import Link from 'next/link';
- 
+import Link from "next/link";
+
 function Footer() {
   return (
     <footer className="bg-blue-800 border-t border-gray-200 h-[80px]">
       <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-full justify-between">
           <Link
-             href="/About"
+            href="/About"
             className="text-base text-white hover:text-gray-200"
           >
             About

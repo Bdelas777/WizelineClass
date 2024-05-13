@@ -1,7 +1,5 @@
-
-import { FeedbackPayload } from '@/app/api/feedback/route'
-import { internalEndpoints } from '@/app/const/endpoints'
-
+import { FeedbackPayload } from "@/app/api/feedback/route";
+import { internalEndpoints } from "@/app/const/endpoints";
 
 export async function sendFeedback(
   payload: FeedbackPayload,
@@ -9,11 +7,11 @@ export async function sendFeedback(
   const response = await fetch(
     new URL(internalEndpoints.giveFeedback, window.location.origin),
     {
-      method: 'post',
+      method: "post",
       body: JSON.stringify(payload),
     },
-  )
-  if (!response.ok) throw new Error('Something went wrong')
-  const result: FeedbackPayload = await response.json()
-  return result
+  );
+  if (!response.ok) throw new Error("Something went wrong");
+  const result: FeedbackPayload = await response.json();
+  return result;
 }
