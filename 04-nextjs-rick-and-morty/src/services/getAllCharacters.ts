@@ -1,17 +1,10 @@
-import axios from "axios";
 import { Character } from "@/types/Character";
-import { ResponseSchema } from "./schemas";
+import { Response } from "@/types/Response";
+import axios from "axios";
 
 export async function getAllCharacters(): Promise<Character[]> {
-  try {
-    const response = await axios.get<Response>(
-      "https://rickandmortyapi.com/api/character",
-    );
-
-    const responseData = ResponseSchema.parse(response.data);
-
-    return responseData.results;
-  } catch (error) {
-    throw error;
-  }
+  const response = await axios.get<Response>(
+    "https://rickandmortyapi.com/api/character",
+  );
+  return response.data.results;
 }

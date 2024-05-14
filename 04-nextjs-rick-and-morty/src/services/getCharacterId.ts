@@ -1,16 +1,9 @@
-import axios from "axios";
-import { CharacterSchema } from "./schemas";
 import { Character } from "@/types/Character";
-export async function getCharacterId(id: number): Promise<Character> {
-  try {
-    const response = await axios.get(
-      `https://rickandmortyapi.com/api/character/${id}`,
-    );
-    const characterData = response.data;
-    const validatedCharacter = CharacterSchema.parse(characterData);
+import axios from "axios";
 
-    return validatedCharacter;
-  } catch (error) {
-    throw error;
-  }
+export async function getCharacterId(id: number): Promise<Character> {
+  const response = await axios.get<Character>(
+    `https://rickandmortyapi.com/api/character/${id}`,
+  );
+  return response.data;
 }
