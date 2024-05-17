@@ -33,8 +33,8 @@ export function Info({ character, isFavorite, toggleFavorite }: InfoProps) {
           tabIndex={0}
           aria-pressed={isFavorite}
         >
-          {isFavorite && <FaStar size={25} />}
-          {!isFavorite && <FaRegStar size={25} />}
+          {isFavorite && <FaStar data-testid="star-full" size={25} />}
+          {!isFavorite && <FaRegStar data-testid="star-empty" size={25} />}
         </div>
       </div>
       <Text text={`${character.status} - ${character.species}`} />

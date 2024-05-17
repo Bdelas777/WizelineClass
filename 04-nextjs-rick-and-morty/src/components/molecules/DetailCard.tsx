@@ -8,7 +8,11 @@ interface DetailCardProps {
 
 export default function DetailCard({ character }: DetailCardProps) {
   return (
-    <div className="mt-10 w-full flex items-center justify-center gap-x-[100px]">
+    <div
+      className="mt-10 w-full flex items-center justify-center gap-x-[100px] "
+      id="character-detail"
+      data-testid="character-detail" // Agregado el data-testid aquí
+    >
       <Image
         width={300}
         height={300}
