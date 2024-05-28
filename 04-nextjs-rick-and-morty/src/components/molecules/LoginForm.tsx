@@ -11,21 +11,20 @@ import { Message } from "../atoms/Message";
 
 export function LoginForm() {
   const searchParams = useSearchParams();
-
   const [error, setError] = useState("");
 
   useEffect(() => {
     if (searchParams.get("error")) {
-      setError("Credencales inválidas");
+      setError("Credenciales inválidas");
     }
-  });
+  }, [searchParams]);
 
-  const login = async (formData: FormData) => {
+  const login = async (formData) => {
     try {
       await signIn("credentials", {
         username: formData.get("username"),
         password: formData.get("password"),
-        callbackUrl: "/characters",
+        callbackUrl: "/",
       });
     } catch (error) {
       setError("Credenciales inválidas");
@@ -34,13 +33,17 @@ export function LoginForm() {
 
   return (
     <form
-      action={login}
+      onSubmit={(e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        login(formData);
+      }}
       name="login"
-      className="mx-auto flex w-fit flex-col items-baseline border border-gray-300 p-10 shadow-md *:mb-3 bg-white"
+      className="mx-auto w-full max-w-md flex flex-col items-stretch border border-gray-300 rounded-lg p-6 shadow-lg bg-white"
     >
-      <span className="my-5 w-full text-center text-xl font-bold">
+      <h2 className="mb-8 text-center text-3xl font-semibold text-gray-800">
         Iniciar sesión
-      </span>
+      </h2>
 
       <TextLine
         title="Nombre de usuario"
@@ -55,17 +58,17 @@ export function LoginForm() {
 
       <ButtonForm text="Iniciar sesión" />
 
-      <div className="w-full text-center">
-        <p className="font-bold mt-3">¿No tienes una cuenta aún?</p>
+      <div className="mt-6 text-center">
+        <p className="font-medium text-gray-600">¿No tienes una cuenta aún?</p>
         <Link
           href="/signup"
-          className="mt-2 font-bold text-emerald-600 hover:text-emerald-800"
+          className="font-medium text-blue-600 hover:text-blue-800"
         >
           Regístrate
         </Link>
       </div>
 
-      {error != "" && <Message error={true} message={error} />}
+      {error && <Message error={true} message={error} />}
     </form>
   );
 }

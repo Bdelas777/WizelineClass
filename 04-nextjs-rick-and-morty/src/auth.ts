@@ -1,8 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
-import { signupSchema } from "./schemas/signupschema";
 import { getUserByNameAndPass } from "./data/users";
+import { signupSchema } from "./schemas/signupschema";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {

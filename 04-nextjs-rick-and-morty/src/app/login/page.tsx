@@ -5,7 +5,7 @@ export default function Login() {
   return (
     <PageTemplate
       titleLinks={["Personajes", "Acerca de"]}
-      urlLinks={["/", "/about"]}
+      urlLinks={["/", "/About"]}
     >
       <LoginForm />
     </PageTemplate>

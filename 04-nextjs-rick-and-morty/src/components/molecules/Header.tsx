@@ -7,7 +7,8 @@ interface HeaderProps {
 
 export function Header({ titles = [], urls = [] }: HeaderProps) {
   return (
-    <header className="flex h-36 w-full items-center justify-end bg-blue-800">
+    <header className="h-36 w-full flex flex-row justify-between items-center bg-blue-800">
+      <h1 className="ml-6 text-4xl font-bold text-white">Rick and Morty API</h1>
       {titles.map((title, index) => (
         <Link
           key={title}

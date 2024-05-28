@@ -4,12 +4,14 @@ import { Info } from "./Info";
 
 interface CharacterCardProps {
   character: Character;
-  isFavorite: boolean;
-  toggleFavorite: (element: Character, favorite: boolean) => void;
+  type: "normal" | "favorite";
+  isFavorite?: boolean;
+  toggleFavorite?: (element: Character, favorite: boolean) => void;
 }
 
 export default function CharacterCard({
   character,
+  type,
   isFavorite,
   toggleFavorite,
 }: CharacterCardProps) {
@@ -26,6 +28,7 @@ export default function CharacterCard({
         <div className="w-2/3 py-5 pr-10 flex flex-col gap-y-2 text-center items-around text-white">
           <Info
             character={character}
+            type={type}
             isFavorite={isFavorite}
             toggleFavorite={toggleFavorite}
           />
