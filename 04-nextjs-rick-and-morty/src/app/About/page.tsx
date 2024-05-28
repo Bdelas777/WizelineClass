@@ -1,12 +1,18 @@
+import { auth } from "@/auth";
 import { About } from "@/components/organims/About";
 import { PageTemplate } from "@/components/organims/PageTemplate";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const session = await auth();
+
   return (
-    <PageTemplate titleLink="Todos los personajes" urlLink="/">
-      <div className="flex h-screen items-center">
-        <About />
-      </div>
+    <PageTemplate
+      titleLinks={
+        session ? ["Personajes", "Favoritos"] : ["Personajes", "Iniciar sesión"]
+      }
+      urlLinks={session ? ["/", "/favorites"] : ["/", "/login"]}
+    >
+      <About />
     </PageTemplate>
   );
 }

@@ -1,22 +1,20 @@
 import { PropsWithChildren } from "react";
-import { Header } from "@/components/molecules/Header";
-import Footer from "../molecules/Footer";
+import { Header } from "../molecules/Header";
 
 interface PageTemplateProps {
-  titleLink: string;
-  urlLink: string;
+  titleLinks: string[];
+  urlLinks: string[];
 }
 
 export function PageTemplate({
-  titleLink,
-  urlLink,
+  titleLinks,
+  urlLinks,
   children,
 }: PropsWithChildren<PageTemplateProps>) {
   return (
     <main className="my-0 min-h-screen w-full bg-white">
-      <Header title={titleLink} url={urlLink} />
+      <Header titles={titleLinks} urls={urlLinks} />
       {children}
-      <Footer />
     </main>
   );
 }
