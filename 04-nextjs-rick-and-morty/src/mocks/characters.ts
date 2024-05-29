@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { TestCharacter, TestCharacter2 } from "@/types/Character";
-import { CharactersResponse } from "@/types/CharactersReponse";
+import { CharactersResponse } from "@/types/CharactersResponse";
 
 export const getAllCharacters = http.get(`*/api/character`, () => {
   const payload: CharactersResponse = {
