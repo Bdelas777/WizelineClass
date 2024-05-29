@@ -39,7 +39,9 @@ export function LoginForm() {
         login(formData);
       }}
       name="login"
-      className="mx-auto w-full max-w-md flex flex-col items-stretch border border-gray-300 rounded-lg p-6 shadow-lg bg-white"
+      className="mx-auto w-full max-w-md flex flex-col items-stretch border 
+      border-gray-300 rounded-lg p-6 shadow-lg bg-gradient-to-br from-blue-200 to-white 
+      mt-6 mb-6"
     >
       <h2 className="mb-8 text-center text-3xl font-semibold text-gray-800">
         Iniciar sesión

@@ -10,6 +10,7 @@ import signUp from "@/actions/signup";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import Footer from "./Footer";
 
 export function SignupForm() {
   const router = useRouter();
@@ -34,39 +35,43 @@ export function SignupForm() {
   });
 
   return (
-    <form
-      action={action}
-      name="signup"
-      className="mx-auto mt-20 flex w-fit flex-col items-baseline border border-gray-300 bg-white p-10 shadow-md *:mb-3"
-    >
-      <span className="my-5 w-full text-center text-xl font-bold">
-        Regístrate
-      </span>
+    <span className="bg-white">
+      <form
+        action={action}
+        name="signup"
+        className="mx-auto mt-20 flex w-fit flex-col items-baseline border border-gray-300 
+        p-10 shadow-md rounded-lg bg-gradient-to-br from-blue-200 to-white mb-6"
+      >
+        <span className="my-5 w-full text-center text-xl font-bold">
+          Regístrate
+        </span>
 
-      <TextLine
-        title="Nombre de usuario"
-        name="username"
-        placeholder="Nombre"
-      />
-      <PasswordLine
-        title="Contraseña"
-        name="password"
-        placeholder="Contraseña"
-      />
+        <TextLine
+          title="Nombre de usuario"
+          name="username"
+          placeholder="Nombre"
+        />
+        <PasswordLine
+          title="Contraseña"
+          name="password"
+          placeholder="Contraseña"
+        />
 
-      <ButtonForm text="Regístrate" />
+        <ButtonForm text="Regístrate" />
 
-      <div className="w-full text-center">
-        <p className="mt-3 font-bold">¿Ya tienes una cuenta?</p>
-        <Link
-          href="/login"
-          className="mt-2 font-bold text-blue-800 hover:text-blue-600"
-        >
-          Iniciar sesión
-        </Link>
-      </div>
+        <div className="w-full text-center">
+          <p className="mt-3 font-bold">¿Ya tienes una cuenta?</p>
+          <Link
+            href="/login"
+            className="mt-2 font-bold text-blue-800 hover:text-blue-600"
+          >
+            Iniciar sesión
+          </Link>
+        </div>
 
-      <Message error={formState.error} message={formState.message} />
-    </form>
+        <Message error={formState.error} message={formState.message} />
+      </form>
+      <Footer />
+    </span>
   );
 }
