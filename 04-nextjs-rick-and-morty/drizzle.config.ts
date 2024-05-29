@@ -1,5 +1,5 @@
-import { dbConfig } from "@/const/dbConfig";
 import { defineConfig } from "drizzle-kit";
+import { dbConfig } from "@/const/dbConfig";
 
 export default defineConfig({
   schema: "./src/db/schema.ts",
