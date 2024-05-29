@@ -17,6 +17,7 @@
     "docker:start": "docker container start rick-morty"
   },
   "dependencies": {
+    "@vercel/postgres": "^0.8.0",
     "bcrypt-ts": "^5.0.2",
     "drizzle-orm": "^0.30.10",
     "next": "^14.2.3",
