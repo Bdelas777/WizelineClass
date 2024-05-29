@@ -17,7 +17,7 @@ export default async function Home() {
         titleLinks={
           session ? ["Favoritos", "Acerca de"] : ["Iniciar sesión", "Acerca de"]
         }
-        urlLinks={session ? ["/favorites", "/about"] : ["/login", "/about"]}
+        urlLinks={session ? ["/favorites", "/about"] : ["/login", "/About"]}
       >
         {!session && (
           <p className="ml-16 mt-5 font-bold">
