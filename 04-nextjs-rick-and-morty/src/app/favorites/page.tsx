@@ -1,28 +1,37 @@
-"use client";
-
+import { auth } from "@/auth";
 import CharacterCard from "@/components/molecules/CharacterCard";
 import { CharacterList } from "@/components/organims/CharacterList";
 import { PageTemplate } from "@/components/organims/PageTemplate";
-import { useFavorites } from "@/hooks/useFavorite";
 
-import { Character } from "@/types/Character";
+import { getFavorites } from "@/services/getFavorites";
 
-export default function Favorites() {
-  const { favorites, toggleFavorite } = useFavorites<Character>("characters");
+export default async function Favorites() {
+  const session = await auth();
+  const favoriteCharacters = await getFavorites(Number(session?.user?.id));
 
   return (
     <>
-      <PageTemplate titleLink="Todos los personajes" urlLink="/">
-        <CharacterList>
-          {favorites.map((favorite) => (
-            <CharacterCard
-              key={favorite.id}
-              character={favorite}
-              isFavorite={true}
-              toggleFavorite={toggleFavorite}
-            />
-          ))}
-        </CharacterList>
+      <PageTemplate
+        titleLinks={["Todos los personajes", "Acerca de"]}
+        urlLinks={["/", "/about"]}
+      >
+        {!session && (
+          <p className="ml-16 mt-5 font-bold">
+            Inicia sesión para guardar tus personajes favoritos
+          </p>
+        )}
+        {session && favoriteCharacters.length > 0 && (
+          <CharacterList>
+            {favoriteCharacters.map((favorite) => (
+              <CharacterCard
+                type="favorite"
+                key={favorite.id}
+                character={favorite}
+                isFavorite={true}
+              />
+            ))}
+          </CharacterList>
+        )}
       </PageTemplate>
     </>
   );
