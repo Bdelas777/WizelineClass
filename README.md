@@ -1,13 +1,19 @@
 # WizelineClass
 
-# WizelineClass
-## Status
-![example workflow](https://github.com/Bdelas777/WizelineClass/actions/workflows/test-coverage.yml/badge.svg)
 
 ## Instructions
 
 Use npm run dev to run this project
 
+##Technologies Used
+Next.js for the framework
+React for building the user interface
+Tailwind CSS for styling
+TypeScript for type safety
+Drizzle ORM for database management
+PostgreSQL as the database
+Vercel for deployment
+
 ## Deployment
 
-Checkout the deployed site [on this link](https://rick-morty-eight-teal.vercel.app/)
+Checa el deployment [aqui](https://rick-morty-eight-teal.vercel.app/)
