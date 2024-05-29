@@ -1,22 +1,22 @@
+"use client";
+
 import { FaRegStar, FaStar } from "react-icons/fa6";
 import { Character } from "@/types/Character";
 import Link from "next/link";
 import { Text } from "../atoms/Text";
 import { Title } from "../atoms/Title";
+import { useRouter } from "next/navigation";
+import { toggleFavorite } from "@/actions/toggleFavorite";
 
 interface InfoProps {
   character: Character;
   type: "normal" | "favorite";
   isFavorite?: boolean;
-  toggleFavorite?: (element: Character, favorite: boolean) => void;
 }
 
-export function Info({
-  character,
-  type,
-  isFavorite = false,
-  toggleFavorite = () => {},
-}: InfoProps) {
+export function Info({ character, type, isFavorite = false }: InfoProps) {
+  const router = useRouter();
+
   return (
     <>
       <div className="flex justify-around items-center">
@@ -26,8 +26,9 @@ export function Info({
         {type === "favorite" && (
           <button
             className="cursor-pointer"
-            onClick={() => {
-              toggleFavorite(character, isFavorite);
+            onClick={async () => {
+              await toggleFavorite(isFavorite, character.id);
+              router.refresh();
             }}
           >
             {isFavorite && <FaStar data-testid="star-full" size={25} />}

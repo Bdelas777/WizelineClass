@@ -19,7 +19,7 @@ export function LoginForm() {
     }
   }, [searchParams]);
 
-  const login = async (formData) => {
+  const login = async (formData: FormData) => {
     try {
       await signIn("credentials", {
         username: formData.get("username"),
