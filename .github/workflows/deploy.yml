@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./04-nestjs-rick-and-morty
+        working-directory: ./04-nextjs-rick-and-morty
     steps:
       - name: Checkout
         uses: actions/checkout@v4
